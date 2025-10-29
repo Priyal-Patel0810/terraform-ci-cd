@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "three-tier-state-bucket-priyal-1029" {
+/*resource "aws_s3_bucket" "three-tier-state-bucket-priyal-1029" {
   bucket = "my-unique-encrypted-bucket"
 }
 
@@ -16,7 +16,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example_encryptio
           # kms_master_key_id = aws_kms_key.example_key.arn 
         }
       }
-    }
+    }*/
 resource "aws_security_group" "web_sg" {
   name        = "nginx-web-sg"
   description = "Allow HTTP inbound traffic"
