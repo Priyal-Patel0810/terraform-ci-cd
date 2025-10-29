@@ -74,8 +74,8 @@ resource "aws_instance" "web" {
               apt-get install -y docker.io docker-compose git
               systemctl start docker
               systemctl enable docker
-              git clone https://github.com/Pravesh-Sudha/nginx-node-redis.git 
-              cd nginx-node-redis/
+              git clone https://github.com/Priyal-Patel0810/terraform-ci-cd.git 
+              cd terraform-ci-cd/
               docker-compose up -d --build
               EOF
 
