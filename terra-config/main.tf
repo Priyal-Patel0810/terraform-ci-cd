@@ -78,13 +78,22 @@ resource "aws_instance" "web" {
 
   user_data = <<-EOF
               #!/bin/bash
+              set -euo pipefail
+              export DEBIAN_FRONTEND=noninteractive
+
               apt-get update -y
-              apt-get install -y docker.io docker-compose git
-              systemctl start docker
-              systemctl enable docker
-              git clone https://github.com/Priyal-Patel0810/terraform-ci-cd.git 
-              cd terraform-ci-cd/
-              docker-compose up -d --build
+              apt-get install -y docker.io docker-compose-plugin git
+
+              systemctl enable --now docker
+
+              if [ -d terraform-ci-cd ]; then
+                cd terraform-ci-cd && git pull --rebase
+              else
+                git clone https://github.com/Priyal-Patel0810/terraform-ci-cd.git
+                cd terraform-ci-cd/
+              fi
+
+              docker compose up -d --build
               EOF
 
   tags = {
