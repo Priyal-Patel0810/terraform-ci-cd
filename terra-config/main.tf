@@ -58,7 +58,7 @@ data "aws_vpc" "default" {
 
 data "aws_ami" "ubuntu" {
     most_recent = true
-    owners = ["amazon"]
+    owners = ["099720109477"]
   
       filter {
         name   = "name"
@@ -79,12 +79,12 @@ resource "aws_instance" "web" {
   user_data = <<-EOF
               #!/bin/bash
               apt-get update -y
-              apt-get install -y docker.io docker-compose git
+              apt-get install -y docker.io docker-compose-plugin git
               systemctl start docker
               systemctl enable docker
               git clone https://github.com/Priyal-Patel0810/terraform-ci-cd.git 
               cd terraform-ci-cd/
-              docker-compose up -d --build
+              docker compose up -d --build
               EOF
 
   tags = {
