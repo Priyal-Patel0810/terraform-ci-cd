@@ -5,6 +5,7 @@ provider "aws" {
 /*resource "aws_s3_bucket" "three-tier-state-bucket-priyal-1029" {
   bucket = "my-unique-encrypted-bucket"
 }
+#####
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "example_encryption" {
   bucket = aws_s3_bucket.three-tier-state-bucket-priyal-1029.id
